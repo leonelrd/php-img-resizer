@@ -10,8 +10,18 @@
 <body>
     <form action="img-resizer.php" method="POST" enctype="multipart/form-data">
         <h2>Image Resizer</h2>
-        <label for="">Elija la imagen: </label><br>
+        <label for="">Elige la imagen: </label><br>
         <input type="file" name="imagen" id=""><br>
+
+        <label for="i-width">Elige el ancho de la imagen:</label>
+        <select name="img-width" id="i-witdh">
+            <option value="480">480p</option>
+            <option value="600">600p</option>
+            <option value="720" selected>720p</option>
+            <option value="960">960p</option>
+            <option value="1080">1080p</option>
+        </select>
+        <br>
         <input type="submit" value="Redimensionar">
     </form>
 </body>

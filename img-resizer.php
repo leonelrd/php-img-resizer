@@ -12,7 +12,7 @@
 
     }else{
         //Establecemos el ancho fijo que tendran las miniaturas.
-        $ancho = 1080;
+        $ancho = $_POST['img-width'];
 
         //obtenemos informacion acerca de la imagen para conocer su extension. 
         $info = pathinfo($name_imagen);
@@ -36,11 +36,19 @@
                 $original = "imagenes/$name_imagen";
                 $copia = "imagenes/resize/resize_$name_imagen";
                 
-                copy($tmp_imagen, $original);// imagen.jpg
-                imagejpeg($imagen_nueva, $copia);// resize_imagen.jpg
+                if (file_exists($copia)) {
 
-                echo "La imagen nueva se ha generado.";
-                echo "<br><a href='img-form.html'>Regresar</a>";
+                    echo "La imagen ya existe.";
+                    echo "<br><a href='img-form.html'>Regresar</a>";
+
+                }else{
+
+                    copy($tmp_imagen, $original);// imagen.jpg
+                    imagejpeg($imagen_nueva, $copia);// resize_imagen.jpg
+                    echo "La imagen nueva se ha generado.";
+                    echo "<br><a href='img-form.html'>Regresar</a>";
+
+                }
             }
         }else{
             echo"La imagen debe tener un ancho mayor que 1080.";
